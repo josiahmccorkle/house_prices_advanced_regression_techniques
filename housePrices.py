@@ -19,9 +19,9 @@ from preprocessing import clean_data, preprocess
 #  Argument parsing
 # ---------------------------------
 # Initialize the parser
-parser = argparse.ArgumentParser(description="Example script with CLI flags")
+parser = argparse.ArgumentParser(description="passing in test flag to run predictions")
 # Add a flag (boolean)
-parser.add_argument("--test", action="store_true", help="Enable this flag")
+parser.add_argument("--test", action="store_true", help="This will run the test and predict house prices")
 # Parse the arguments
 args = parser.parse_args()
 
