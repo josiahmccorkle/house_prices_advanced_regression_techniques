@@ -5,15 +5,12 @@ import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 import os
-
 from sklearn.linear_model import Ridge
 from sklearn.model_selection import train_test_split
 from sklearn.pipeline import Pipeline
 from sklearn.metrics import mean_squared_error
-
 from preprocessing import clean_data, preprocess
 
-# from preprocessing import clean_data, preprocess
 
 # ---------------------------------
 #  Argument parsing
