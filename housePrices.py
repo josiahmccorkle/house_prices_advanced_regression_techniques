@@ -51,6 +51,7 @@ df = clean_data(df)
 if not args.test:
     y = df["SalePrice"]
     X = df.drop(["SalePrice", "Id"], axis=1)
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 else:
     X = df.drop(["Id"], axis=1)
 
@@ -71,7 +72,7 @@ if not os.path.exists(output_dir):
     os.makedirs(output_dir)
 
 model_path = os.path.join(output_dir, "model.pkl")
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
 if not args.test:
     model_pipeline.fit(X_train,y_train)
     joblib.dump(model_pipeline, model_path)  # Save the trained model
@@ -90,7 +91,7 @@ else:
         raise FileNotFoundError("🚨 model.pkl not found. Please run training first to create the model.")
 
     model_pipeline = joblib.load(model_path)
-    y_pred = model_pipeline.predict(X_test)
+    y_pred = model_pipeline.predict(X)
     submission = pd.DataFrame({
         "Id": df["Id"],
         "SalePrice": y_pred
