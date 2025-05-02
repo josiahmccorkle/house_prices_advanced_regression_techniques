@@ -60,6 +60,7 @@ else:
 # 7. Build Model Pipeline
 # --------------------------------
 preprocessor = preprocess(X)
+# note to self, Ridge regression is a linear regression model, which is used for regression tasks
 model_pipeline = Pipeline(steps=[("preprocess", preprocessor),("model", Ridge())])
 
 
